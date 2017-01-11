@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TaskApp</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
+    <script src="scripts/TaskAppViewModel.js"></script>
+    <link rel="stylesheet" href="style/Style.css" />
+</head>
+<body>
+    <h1>Test This</h1>
+    <p><strong data-bind="text: Name"></strong></p>
+    <p>p2 p2 p2</p>
+    <script>
+        $(function () {
+            ko.applyBindings(new TaskAppViewModel());
+        });
+    </script>
+</body>
+</html>
