@@ -12,6 +12,7 @@ namespace TaskApp.Logging
         public DBLogger(ILoggingRepository repository, Boolean debugOn = false)
         {
             _repository = repository;
+            _debugOn = debugOn;
         }
 
         private ILoggingRepository _repository;

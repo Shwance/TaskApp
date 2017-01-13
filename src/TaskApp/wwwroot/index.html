@@ -5,16 +5,23 @@
     <title>TaskApp</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
-    <script src="scripts/TaskAppViewModel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
+    <script src="scripts/TaskViewModel.js"></script>
     <link rel="stylesheet" href="style/Style.css" />
 </head>
 <body>
-    <h1>Test This</h1>
-    <p><strong data-bind="text: Name"></strong></p>
-    <p>p2 p2 p2</p>
+   
+    <div data-bind="template: { name: 'task-template', foreach: tasks }"></div>
+
+    <script id="task-template" type="text/html">
+        <label data-bind="attr: { 'for': id }">Name:</label>
+        <input data-bind="attr: { 'id': id }, value: name" />
+        <div data-bind="template: { name: 'task-template', foreach: tasks }"></div>
+    </script>
+
     <script>
         $(function () {
-            ko.applyBindings(new TaskAppViewModel());
+            ko.applyBindings(new TaskViewModel());
         });
     </script>
 </body>
