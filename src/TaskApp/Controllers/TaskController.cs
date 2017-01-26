@@ -22,7 +22,7 @@ namespace TaskApp.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<Task> Get()
+        public Task Get()
         {
             return _repository.GetAll();
         }

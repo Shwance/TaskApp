@@ -12,5 +12,6 @@ namespace TaskApp.Model
         public String Description { get; set; }
         public DateTime DueDate { get; set; }
         public Boolean Completed { get; set; }
+        public List<Task> Tasks { get; set; }
     }
 }

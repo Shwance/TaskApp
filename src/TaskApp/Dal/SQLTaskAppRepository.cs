@@ -11,46 +11,56 @@ namespace TaskApp.Dal
     {
 
         private String _connectionString = "data source=sql5028.smarterasp.net;initial catalog=DB_A09B09_GeoLocation;User Id=DB_A09B09_GeoLocation_admin;Password=jjuuddee1133;integrated security=false";
-        private static List<Task> Tasks;
+        private static Task Task;
         private ILogger _logger;
 
         public SQLTaskAppRepository(String connectionString, ILogger logger)
         {
             _connectionString = connectionString;
             _logger = logger;
-            Tasks = new List<Task>();
-            Tasks.Add(new Task() { Id=1,Name="First Task",Description="Task Description", DueDate = DateTime.Now ,Completed=false});
+            Task = new Task() { Id = 1, Name = "First Task", Description = "Task Description", DueDate = DateTime.Now, Completed = false };
+            List<Task> subTasks = new List<Task>();
+            subTasks.Add(new Task() { Id = 2, Name = "Second Task", Description = "2nd Description", DueDate = DateTime.Now, Completed = false });
+            
+            List<Task> thirdLevel = new List<Task>();
+
+            thirdLevel.Add(new Task() { Id = 4, Name = "Fourth Task", Description = "Fourth Description", DueDate = DateTime.Now, Completed = false });
+            thirdLevel.Add(new Task() { Id = 5, Name = "Fifth Task", Description = "Fifth Description", DueDate = DateTime.Now, Completed = false });
+
+            subTasks.Add(new Task() { Id = 3, Name = "Third Task", Description = "3rd Description", DueDate = DateTime.Now, Completed = false,Tasks = thirdLevel });
+
+            Task.Tasks = subTasks;
         }
 
         public void Add(Task task)
         {
-            Tasks.Add(task);
+            Task.Tasks.Add(task);
         }
 
         public Task Find(int id)
         {
             _logger.Log("Got a Task", Microsoft.Extensions.Logging.LogLevel.Information);
-            return Tasks.Find(x => x.Id == id);
+            return Task.Tasks.Find(x => x.Id == id);
         }
 
-        public IEnumerable<Task> GetAll()
+        public Task GetAll()
         {
             _logger.Log("Got all the Tasks", Microsoft.Extensions.Logging.LogLevel.Information);
-            return Tasks;
+            return Task;
         }
 
         public Task Remove(int id)
         {
-            var task = Tasks.Find(x => x.Id == id);
+            var task = Task.Tasks.Find(x => x.Id == id);
             if (task != null)
-                Tasks.Remove(task);
+                Task.Tasks.Remove(task);
 
             return task;
         }
 
         public void Update(Task task)
         {
-            var oldTask = Tasks.Find(x => x.Id == task.Id);
+            var oldTask = Task.Tasks.Find(x => x.Id == task.Id);
             if (oldTask != null)
             {
                 oldTask.Name = task.Name;
