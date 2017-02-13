@@ -14,7 +14,9 @@
     <div data-bind="template: { name: 'task-template', foreach: tasks }"></div>
 
     <script id="task-template" type="text/html">
-        <input type="text" data-bind="value:name"/><input type="text" data-bind="value:description" />
+        <input type="text" data-bind="value:name"/>
+        <input type="text" data-bind="value:description" />
+        <input type="checkbox" data-bind="checked: completed" />
         <div data-bind="template: { name: 'task-template', foreach: tasks }"></div>
     </script>
 

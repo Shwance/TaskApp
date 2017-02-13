@@ -5,13 +5,8 @@ using System.Threading.Tasks;
 
 namespace TaskApp.Model
 {
-    public class Task
+    public class Task : BaseTask
     {
-        public Int32 Id { get; set; }
-        public String Name { get; set; }
-        public String Description { get; set; }
-        public DateTime DueDate { get; set; }
-        public Boolean Completed { get; set; }
         public List<Task> Tasks { get; set; }
     }
 }

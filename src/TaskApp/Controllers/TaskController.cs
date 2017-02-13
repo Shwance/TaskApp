@@ -4,6 +4,8 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using TaskApp.Dal;
 using TaskApp.Model;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -36,16 +38,16 @@ namespace TaskApp.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]Task value)
+        public void Post(Task value)
         {
-            _repository.Update(value);
+            _repository.Add(value);
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Task value)
+        [HttpPut]
+        public void Put(Task task)
         {
-            _repository.Add(value);
+            _repository.Update(task);
         }
 
         // DELETE api/values/5

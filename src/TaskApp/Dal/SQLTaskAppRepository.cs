@@ -20,12 +20,12 @@ namespace TaskApp.Dal
             _logger = logger;
             Task = new Task() { Id = 1, Name = "First Task", Description = "Task Description", DueDate = DateTime.Now, Completed = false };
             List<Task> subTasks = new List<Task>();
-            subTasks.Add(new Task() { Id = 2, Name = "Second Task", Description = "2nd Description", DueDate = DateTime.Now, Completed = false });
+            subTasks.Add(new Task() { Id = 2, Name = "Second Task", Description = "2nd Description", DueDate = DateTime.Now, Completed = false, Tasks = new List<Task>() });
             
             List<Task> thirdLevel = new List<Task>();
 
-            thirdLevel.Add(new Task() { Id = 4, Name = "Fourth Task", Description = "Fourth Description", DueDate = DateTime.Now, Completed = false });
-            thirdLevel.Add(new Task() { Id = 5, Name = "Fifth Task", Description = "Fifth Description", DueDate = DateTime.Now, Completed = false });
+            thirdLevel.Add(new Task() { Id = 4, Name = "Fourth Task", Description = "Fourth Description", DueDate = DateTime.Now, Completed = false, Tasks = new List<Task>() });
+            thirdLevel.Add(new Task() { Id = 5, Name = "Fifth Task", Description = "Fifth Description", DueDate = DateTime.Now, Completed = true, Tasks = new List<Task>() });
 
             subTasks.Add(new Task() { Id = 3, Name = "Third Task", Description = "3rd Description", DueDate = DateTime.Now, Completed = false,Tasks = thirdLevel });
 
